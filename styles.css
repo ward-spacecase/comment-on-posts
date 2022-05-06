@@ -5,20 +5,23 @@ body {
     display: flex;
     justify-content: center;
     height: 100vh;
+    background-color: #EAEAEA;
 }
 .post-container {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    font-family: sans-serif;
     height: 700px;
     width: 1000px;
-    background-color: #E0E0E0;
+    background-color: #EEEEEE;
+}
+.post-container, .input, body {
+    font-family: sans-serif;
 }
 .post-title {
     background-color: #FDFDFD;
-    margin: 10px 20px;
+    margin: 10px 20px 0 20px;
     padding: 10px 0;
 }
 .post-title h1 {
@@ -26,12 +29,65 @@ body {
     font-weight: normal;
     padding: 0 10px;
 }
-
-.post-header {
-    position: fixed;
-}
 @media only screen and (max-width: 1000px) {
     .post-container {
         width: 100vw;
     }
+}
+
+/* comment list section */
+
+.comment-section {
+    overflow-y: scroll;
+    background-color: #dfdfdf;
+    width: 100%;
+    max-width: 960px;
+    height: 464px;
+    margin: auto;
+    margin-top: 0px;
+}
+@media only screen and (max-width: 700px) {
+    .comment-section {
+        height: 432px;
+    }
+}
+@media only screen and (max-width: 430px) {
+    .comment-section {
+        height:364px;
+    }
+}
+/* bottom create comment section*/
+
+.create-comment-container {
+    min-height: 102px;
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+}
+.create-comment-form {
+    min-height: 102px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.input-item {
+    padding: 10px;
+}
+.input-item .input {
+    height: 30px;
+    width: 100%;
+    border: none;
+}
+.input-item.second {
+    flex-grow: 3;
+}
+.button {
+    background: none;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    box-shadow: none;
+    color: #00b3b3;
 }
