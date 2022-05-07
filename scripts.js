@@ -1,4 +1,5 @@
 let comments = [];
+let idCounter = 0;
 
 let onSubmitClick = function() {
     let displayNameInput = document.getElementById("display-name-input");
@@ -12,11 +13,11 @@ let onSubmitClick = function() {
     }
     comments.push({
         "displayName": displayNameInput.value,
-        "commentDetails": commentInput.value
+        "commentDetails": commentInput.value,
+        "id": idCounter++
     });
 
     reloadComments();
-    console.log(comments);
 };
 
 let reloadComments = function() {
@@ -30,7 +31,7 @@ let reloadComments = function() {
                             <div class="display-name">${comObj.displayName}</div>
                             <div class="right-buttons">
                                 <div><button class="button">edit</button></div>
-                                <div><button class="button">delete</button></div>
+                                <div><button class="button" onclick="deleteComment(${comObj.id})">delete</button></div>
                             </div>
                         </div>
                         <div class="bottom-row">
@@ -42,3 +43,20 @@ let reloadComments = function() {
     });
     document.getElementById("comment-section").innerHTML = commentHTML;
 }
+
+let deleteComment = function(id) {
+    comments = comments.filter(obj => {
+        return obj.id != id;
+    });
+    reloadComments();
+}
+
+document.addEventListener('DOMContentLoaded', event => {
+    
+    comments.push({
+        "displayName": "not a bot",
+        "commentDetails": "first comment!",
+        "id": idCounter++
+    });
+    reloadComments();
+});
