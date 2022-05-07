@@ -46,6 +46,47 @@ body {
     margin: auto;
     margin-top: 0px;
 }
+.comment-section .comment-item {
+    background-color: #fcfcfc;
+    width: 95%;
+    min-height: 90px;
+    margin: auto;
+    margin: 25px auto;
+    display: flex;
+}
+.comment-section .comment-item .icon {
+    height: 60px;
+    margin: auto;
+    margin-left: 20px;
+    margin-right: 0;
+    text-align: center;
+}
+.comment-section .comment-item-main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 6;
+    height: 30px;
+}
+.comment-section .comment-item-main .top-row {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
+}
+.top-row .right-buttons {
+    flex-grow: 2;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+.top-row .right-buttons div, .top-row .display-name {
+    margin: 0 10px;
+}
+.bottom-row {
+    font-size: 20px;
+    margin: 5px 10px;
+}
 @media only screen and (max-width: 700px) {
     .comment-section {
         height: 432px;
@@ -56,8 +97,9 @@ body {
         height:364px;
     }
 }
-/* bottom create comment section*/
 
+/* bottom create comment section*/
+s
 .create-comment-container {
     min-height: 102px;
     position: fixed;
@@ -90,4 +132,7 @@ body {
 	outline: inherit;
     box-shadow: none;
     color: #00b3b3;
+}
+.button:hover {
+    color: rgb(12, 46, 141);
 }
