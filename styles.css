@@ -16,7 +16,7 @@ body {
     width: 1000px;
     background-color: #EEEEEE;
 }
-.post-container, .input, body {
+.post-container, .input, body, textarea {
     font-family: sans-serif;
 }
 .post-title {
@@ -135,4 +135,7 @@ s
 }
 .button:hover {
     color: rgb(12, 46, 141);
+}
+.button.cancel {
+    color: #aaaaaa;
 }

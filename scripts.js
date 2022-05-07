@@ -30,11 +30,11 @@ let reloadComments = function() {
                         <div class="top-row">
                             <div class="display-name">${comObj.displayName}</div>
                             <div class="right-buttons">
-                                <div><button class="button">edit</button></div>
+                                <div><button class="button" onclick="editComment(${comObj.id})">edit</button></div>
                                 <div><button class="button" onclick="deleteComment(${comObj.id})">delete</button></div>
                             </div>
                         </div>
-                        <div class="bottom-row">
+                        <div class="bottom-row" id="comment-${comObj.id}">
                             <div class="comment-details">${comObj.commentDetails}</div>
                         </div>
                     </div>
@@ -48,6 +48,35 @@ let deleteComment = function(id) {
     comments = comments.filter(obj => {
         return obj.id != id;
     });
+    reloadComments();
+}
+
+let editComment = function(id) {
+    let commentContainer = document.getElementById("comment-" + id);
+    let currentComment = comments.find(obj => { return obj.id == id});
+    commentContainer.innerHTML = `
+        <div> 
+        <textarea id="edittext-${id}" rows="4" cols="60">${currentComment.commentDetails}</textarea>
+        <button class="button" onclick="editCommentSave(${id})">save</button>
+        <button class="button cancel" onclick="editCommentCancel(${id})">cancel</button>
+        </div>
+    `;
+}
+
+let editCommentCancel = function(id) {
+    let commentContainer = document.getElementById("comment-" + id);
+    let commentTextArea = document.getElementById("edittext-" + id);
+    commentContainer.innerHTML = ` <div class="comment-details">
+    ${commentTextArea.innerHTML}
+    </div>`;
+}
+
+let editCommentSave = function(id) {
+    let commentContainer = document.getElementById("comment-" + id);
+    let commentTextArea = document.getElementById("edittext-" + id);
+    let oldCommentObj = comments[comments.findIndex(com => com.id == id)];
+    oldCommentObj.commentDetails = commentTextArea.value;
+    comments[comments.findIndex(com => com.id == id)] = oldCommentObj;
     reloadComments();
 }
 
